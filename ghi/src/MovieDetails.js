@@ -1,28 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './index.css';
-import ReviewForm from './ReviewForm';
-import UpdateReviewForm from './UpdateReviewForm';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import "./index.css";
+import ReviewForm from "./ReviewForm";
+import UpdateReviewForm from "./UpdateReviewForm";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Recommendations from "./Recommendations";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [HideReview, setHideReview] = useState(false);
   const [reviewConfirmation, setReviewConfirmation] = useState(false);
   const [review, setReviewData] = useState([]);
+  const [show, setShow] = useState(false);
 
-  const [trailer, setTrailer] = useState('');
+  const [trailer, setTrailer] = useState("");
   const { movie_id } = useParams();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const fetchReviews = async () => {
-      const url = 'http://localhost:8000/token';
-      const urlReviewsAll = 'http://localhost:8000/api/reviews/all/loggedout';
+      const url = "http://localhost:8000/token";
+      const urlReviewsAll = "http://localhost:8000/api/reviews/all/loggedout";
       const fetchConfig = {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
       };
       try {
         const responseToken = await fetch(url, fetchConfig);
@@ -57,11 +64,11 @@ const MovieDetails = () => {
           setHideReview(true);
         }
       } catch (error) {
-        console.error('This is expected if logged out:', error);
+        console.error("This is expected if logged out:", error);
       }
     };
     fetchReviews();
-  }, []);
+  }, [movie_id]);
 
   const fetchMovieDetails = async () => {
     const tmdbUrl = `https://api.themoviedb.org/3/movie/${movie_id}?&api_key=fed7f31bd9b9809594103276b2560e2f&append_to_response=videos`;
@@ -72,7 +79,7 @@ const MovieDetails = () => {
     let video = null;
     if (tmdbData.videos && tmdbData.videos.results) {
       for (const result of tmdbData.videos.results) {
-        if (result.type === 'Trailer') {
+        if (result.type === "Trailer") {
           video = result.key;
           break;
         }
@@ -97,18 +104,18 @@ const MovieDetails = () => {
   return (
     <>
       <div>
-        <h1 className='text-center text-light'>{movieDetails.Title}</h1>
+        <h1 className="text-center text-light">{movieDetails.Title}</h1>
       </div>
-      <div className='detail-container'>
-        <div className='poster-left'>
+      <div className="detail-container">
+        <div className="poster-left">
           <img
             src={movieDetails.Poster}
-            alt='poster'
-            className='card details'
+            alt="poster"
+            className="card details"
           />
         </div>
-        <div className='detail-right'>
-          <p className='text-light'>
+        <div className="detail-right">
+          <p className="text-light">
             Year: {movieDetails.Year}
             <br />
             Rated: {movieDetails.Rated}
@@ -137,21 +144,21 @@ const MovieDetails = () => {
           </p>
         </div>
       </div>
-      <div className='videoPlayer'>
-        <div className='embed-responsive embed-responsive-16by9'>
+      <div className="videoPlayer">
+        <div className="embed-responsive embed-responsive-16by9">
           <iframe
-            width='560'
-            height='315'
+            width="560"
+            height="315"
             src={`https://www.youtube.com/embed/${trailer}`}
-            title='YouTube video player'
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
         </div>
       </div>
       <div>
         <div className="reviews-background">
-          <h2 className='review-header'>Reviews</h2>
+          <h2 className="review-header">Reviews</h2>
           <table>
             <thead>
               <tr>
@@ -183,13 +190,53 @@ const MovieDetails = () => {
       </div>
       <div>
         {HideReview && reviewConfirmation === false && (
-          <ReviewForm movie_id={movie_id} />
+          <Button variant="primary" onClick={handleShow}>
+            Leave a Reel Review!
+          </Button>
+        )}
+        ;
+        {HideReview && reviewConfirmation === true && (
+          <Button variant="primary" onClick={handleShow}>
+            Update your Reel Review!
+          </Button>
+        )}
+      </div>
+      <div>
+        {HideReview && reviewConfirmation === false && (
+          <Modal
+            show={show}
+            onHide={handleClose}
+            dialogClassName="modal-100w"
+            aria-labelledby="example-custom-modal-styling-title"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Leave a Review</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <ReviewForm movie_id={movie_id} />
+            </Modal.Body>
+          </Modal>
         )}
       </div>
       <div>
         {HideReview && reviewConfirmation === true && (
-          <UpdateReviewForm movie_id={movie_id} />
+          <Modal
+            show={show}
+            onHide={handleClose}
+            dialogClassName="modal-100w"
+            aria-labelledby="example-custom-modal-styling-title"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>Update Review</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <UpdateReviewForm movie_id={movie_id} />
+            </Modal.Body>
+          </Modal>
         )}
+      </div>
+      <div>
+        <Recommendations />
       </div>
     </>
   );
