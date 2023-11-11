@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const [reviewConfirmation, setReviewConfirmation] = useState(false);
   const [review, setReviewData] = useState([]);
   const [show, setShow] = useState(false);
+  const [backdropPath, setBackDropPath] = useState(false);
 
   const [trailer, setTrailer] = useState("");
   const { movie_id } = useParams();
@@ -76,6 +77,9 @@ const MovieDetails = () => {
     const tmdbResponse = await fetch(tmdbUrl);
     const tmdbData = await tmdbResponse.json();
     const imdbId = tmdbData.imdb_id;
+    const backDrop = tmdbData.backdrop_path;
+    setBackDropPath(backDrop);
+
     let video = null;
     if (tmdbData.videos && tmdbData.videos.results) {
       for (const result of tmdbData.videos.results) {
@@ -104,7 +108,16 @@ const MovieDetails = () => {
   return (
     <>
       <div>
-        <h1 className="text-center text-light">{movieDetails.Title}</h1>
+        <div className="backdrop-container">
+          <img
+            src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
+            alt="backdrop"
+            className="backdrop"
+          />
+          <h1 className="text-center text-light movie-title">
+            {movieDetails.Title} ({movieDetails.Year})
+          </h1>
+        </div>
       </div>
       <div className="detail-container">
         <div className="poster-left">
@@ -116,7 +129,7 @@ const MovieDetails = () => {
         </div>
         <div className="detail-right">
           <p className="text-light">
-            Year: {movieDetails.Year}
+            Plot: {movieDetails.Plot}
             <br />
             Rated: {movieDetails.Rated}
             <br />
@@ -131,8 +144,6 @@ const MovieDetails = () => {
             Writer: {movieDetails.Writer}
             <br />
             Actors: {movieDetails.Actors}
-            <br />
-            Plot: {movieDetails.Plot}
             <br />
             Language: {movieDetails.Language}
             <br />

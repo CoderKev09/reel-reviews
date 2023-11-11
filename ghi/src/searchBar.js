@@ -19,15 +19,12 @@ function SearchBar() {
       }
     };
     movieSearch(search);
-    if (search.length > 0) {
-      setHideSearch(true);
-    } else {
-      setHideSearch(false);
-    }
+    setHideSearch(search.length > 0);
   }, [search]);
 
   const closeSearch = () => {
     setHideSearch(false);
+    setSearch("");
   };
 
   return (
@@ -64,6 +61,7 @@ function SearchBar() {
                     <Link
                       className="movie-title-link"
                       to={`/movie/${value.id}`}
+                      onClick={closeSearch}
                     >
                       <p className="movie-text">{value.title}</p>
                     </Link>

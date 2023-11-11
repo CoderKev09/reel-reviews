@@ -33,14 +33,22 @@ function Nav() {
   }, []);
 
   return (
-    <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <Navbar
+      className="navbar navbar-expand-lg navbar-dark"
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        position: "absolute",
+        width: "100%",
+        zIndex: 1000,
+      }}
+    >
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
           <img
             src="https://t4.ftcdn.net/jpg/04/56/20/89/360_F_456208906_h2bZ51348xqpFcYXh4sGUiQDF5zolfRm.jpg"
             alt=""
-            width="115"
-            height="75"
+            width="90"
+            height="50"
           />
           <div id="main">Reel Reviews</div>
         </NavLink>
