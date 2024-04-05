@@ -33,144 +33,125 @@ function Nav() {
   }, []);
 
   return (
-    <Navbar
-      className="navbar navbar-expand-lg navbar-dark"
-      style={{
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
-        position: "absolute",
-        width: "100%",
-        zIndex: 1000,
-      }}
-    >
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">
-          <img
-            src="https://t4.ftcdn.net/jpg/04/56/20/89/360_F_456208906_h2bZ51348xqpFcYXh4sGUiQDF5zolfRm.jpg"
-            alt=""
-            width="90"
-            height="50"
-          />
-          <div id="main">Reel Reviews</div>
-        </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-start"
-          id="navbarSupportedContent"
-        >
-          <ul className="navbar-genres">
-            <li className="navbar-item-genres">
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-genres">
-                  Genres
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/genres/action">
-                    Action
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/adventure">
-                    Adventure
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/animation">
-                    Animation
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/comedy">
-                    Comedy
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/crime">
-                    Crime
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/documentary">
-                    Documentary
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/drama">
-                    Drama
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/family">
-                    Family
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/fantasy">
-                    Fantasy
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/history">
-                    History
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/horror">
-                    Horror
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/music">
-                    Music
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/mystery">
-                    Mystery
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/romance">
-                    Romance
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/sciencefiction">
-                    Science Fiction
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/tvmovie">
-                    TV Movie
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/thriller">
-                    Thriller
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/war">
-                    War
-                  </Dropdown.Item>
-                  <Dropdown.Item as={Link} to="/genres/western">
-                    Western
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </li>
-          </ul>
-        </div>
-        <div className="search-box">
-          <SearchBar />
-        </div>
+    <Navbar className="navbar navbar-expand-lg navbar-dark">
+      <NavLink className="navbar-brand" to="/">
+        <div className="logo">ReelReviews </div>
+      </NavLink>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div
+        className="collapse navbar-collapse justify-content-start"
+        id="navbarSupportedContent"
+      >
+        <ul className="navbar-genres list-unstyled">
+          <li className="navbar-item-genres">
+            <Dropdown>
+              <Dropdown.Toggle variant="success" id="dropdown-genres">
+                Genres
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/genres/action">
+                  Action
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/adventure">
+                  Adventure
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/animation">
+                  Animation
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/comedy">
+                  Comedy
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/crime">
+                  Crime
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/documentary">
+                  Documentary
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/drama">
+                  Drama
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/family">
+                  Family
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/fantasy">
+                  Fantasy
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/history">
+                  History
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/horror">
+                  Horror
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/music">
+                  Music
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/mystery">
+                  Mystery
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/romance">
+                  Romance
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/sciencefiction">
+                  Science Fiction
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/tvmovie">
+                  TV Movie
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/thriller">
+                  Thriller
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/war">
+                  War
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/genres/western">
+                  Western
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <SearchBar />
         <div
           className="collapse navbar-collapse justify-content-end"
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav">
-            <li className="navbar-item">
+            <li className="navbar-item1">
               {Hidelogin && (
-                <NavLink to="/signup" className="btn btn-primary mx-1">
+                <NavLink to="/signup" className="btn btn-primary">
                   Signup
                 </NavLink>
               )}
             </li>
-            <li className="navbar-item">
+            <li className="navbar-item2">
               {Hidelogin && (
-                <NavLink to="/login" className="btn btn-info mx-1">
+                <NavLink to="/login" className="btn btn-info">
                   Login
                 </NavLink>
               )}
             </li>
-            <li className="navbar-item">
+            <li className="navbar-item1">
               {!Hidelogin && (
-                <NavLink to="/logout" className="btn btn-danger mx-1">
+                <NavLink to="/logout" className="btn btn-danger">
                   Logout
                 </NavLink>
               )}
             </li>
-            <li className="navbar-item">
+            <li className="navbar-item2">
               {!Hidelogin && (
-                <NavLink
-                  to={`/${user.username}`}
-                  className="btn btn-warning mx-1"
-                >
+                <NavLink to={`/${user.username}`} className="btn btn-warning">
                   Profile
                 </NavLink>
               )}

@@ -41,7 +41,7 @@ function Recommendations() {
                     key={movie.id}
                     src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                     alt={movie.title}
-                    className="card"
+                    className="card border-0"
                   />
                 </Link>
               </div>

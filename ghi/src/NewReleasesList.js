@@ -22,7 +22,7 @@ function NewReleasesList() {
   return (
     <>
       <div>
-        <h2 className="text-center text-light">New Releases</h2>
+        <h2 className="text-center text-light header">New Releases</h2>
       </div>
       <div className="container-fluid movie-row">
         <div className="row">
