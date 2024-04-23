@@ -11,8 +11,8 @@ function MainPage() {
       <PopularMovieBackdrop />
       <div className="tagline">
         <h1 className="display-5 fw-bold text-center text-light font-italic">
-          Captivating cinematic chronicles <br /> Find your next adventure{" "}
-          <br /> Keep it Reel <br />{" "}
+          Captivating cinematic chronicles. <br /> Find your next adventure.{" "}
+          <br /> Keep it Reel. <br />{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"

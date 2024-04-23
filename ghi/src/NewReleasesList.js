@@ -27,16 +27,23 @@ function NewReleasesList() {
       <div className="container-fluid movie-row">
         <div className="row">
           {newReleaseMovies.map((movie) => (
-            <div
-              key={movie.id}
-              className="col d-flex justify-content-start m-1"
-            >
-              <Link to={`/movie/${movie.id}`}>
+            <div key={movie.id} className="movie-list-card col">
+              <Link to={`/movie/${movie.id}`} className="card border-0">
                 <img
                   src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                   alt={movie.title}
                   className="card"
                 />
+                <div className="card-overlay">
+                  <div className="card-info text-center">
+                    <h5>{movie.title}</h5>
+                    <div className="rating-circle">
+                      <p className="movie-rating">
+                        {Math.round(movie.vote_average * 10) / 10}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </Link>
             </div>
           ))}

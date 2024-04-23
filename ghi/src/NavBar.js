@@ -7,7 +7,7 @@ import SearchBar from "./searchBar";
 
 function Nav() {
   const [Hidelogin, setHidelogin] = useContext(TokenContext);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -21,7 +21,9 @@ function Nav() {
       };
       const response = await fetch(url, fetchConfig);
       const tokenData = await response.json();
+      console.log(tokenData);
       setUser(tokenData.account);
+      console.log(user);
 
       if (tokenData === null) {
         setHidelogin(true);

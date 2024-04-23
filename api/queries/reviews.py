@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
 from queries.pool import pool
 from datetime import datetime
 
@@ -25,6 +25,7 @@ class ReviewOutWithUser(BaseModel):
     username: str
     id: int
     posted_time: datetime
+    avatar: Optional[str]
 
 
 class ReviewRepository:
@@ -138,9 +139,10 @@ class ReviewRepository:
                     , reviews.rating
                     , reviews.movie_id
                     , accounts.username
+                    , accounts.avatar
                     FROM reviews
                     JOIN accounts ON (accounts.id = reviews.account_id)
-                    ORDER BY movie_id;
+                    ORDER BY reviews.posted_time DESC;
                     """
                 )
                 return [self.record_to_review_out(record) for record in result]
@@ -179,6 +181,7 @@ class ReviewRepository:
             rating=record[4],
             movie_id=record[5],
             username=record[6],
+            avatar=record[7],
         )
 
     def record_to_movie_reviews_out(self, record):

@@ -143,37 +143,45 @@ h1 {
 .review-date {
   padding-top: 65px;
   padding-bottom: 0px;
+  margin-bottom: 0px;
+  color: rgb(179, 175, 175);
 }
 .scroll {
   overflow-y: auto;
   height: 600px;
+}
+.reviews-scroll {
+  overflow-y: auto;
+  height: 300px;
 }
 
 .flex-container {
   display: flex;
   flex-wrap: wrap;
 }
-.thumbs-up,
+/* .thumbs-up,
 .thumbs-down {
   position: relative;
   top: 30px;
-}
+} */
 .detail-container {
   position: relative;
   bottom: 150px;
 }
 
-.left-container {
-  display: flex;
-  border: solid blue;
-}
+.left-container,
 .right-container {
   display: flex;
-  border: solid red;
+  background-color: #1f2833;
+  border: solid rgb(158, 156, 156);
 }
 
 .liked-left,
-.disliked-right .cast {
+.disliked-right {
+  width: 100%;
+}
+
+.cast {
   flex: 1 1;
 }
 .detail-right {
@@ -503,4 +511,96 @@ th {
 
 .movie-review {
   display: flex;
+  border-bottom: solid;
+  border-color: #403e3e;
+  height: 125px;
+  width: 87%;
+  margin-bottom: 30px;
+}
+
+.review-avatar {
+  height: 50px;
+  width: 40px;
+}
+
+.movie-review-body {
+  margin-left: 20px;
+}
+
+.review-title-span {
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.review-date-span {
+  display: inline-block;
+  margin-top: 27px;
+  font-size: small;
+}
+.recommend-container {
+  position: relative;
+  bottom: 50px;
+}
+/*
+.card {
+  position: relative;
+  width: 200px;
+  overflow: hidden;
+  border: none;
+} */
+
+.card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-overlay {
+  transform: translateY(0);
+}
+
+.card-info {
+  padding: 20px;
+}
+
+.vote_average {
+  border-radius: 50%;
+  background-color: green;
+}
+
+.movie-list-card.col {
+  padding: 3px;
+}
+
+.card:hover {
+  box-shadow: 0 0 3px 3px #28a7a9;
+  transition: box-shadow 0.3s;
+}
+
+.rating-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Circle size */
+  height: 40px; /* Circle size */
+  border-radius: 50%; /* Makes it round */
+  background-color: #28a7a9; /* Circle color, gold for example */
+  color: white; /* Text color */
+  font-weight: bold;
+}
+
+.movie-rating {
+  position: relative;
+  top: 7px;
 }
